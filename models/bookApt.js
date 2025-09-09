@@ -1,14 +1,29 @@
 const mongoose = require('mongoose');
-const { v4: uuidv4 } = require('uuid');
 
 const bookAptSchema = new mongoose.Schema({
     patientId: { type: mongoose.Schema.Types.ObjectId, ref: 'patients' },
-    doctorId: { type: mongoose.Schema.Types.ObjectId, ref: 'doctors' },
-    aptId: {
-        type: String,
-        default: uuidv4,
-        unique: true
-    }
-});
+    doctorId: { type: mongoose.Schema.Types.ObjectId, ref: 'doctors' }
+}, { timestamps: true });
 
-module.exports = mongoose.model('BookApt', bookAptSchema);
+
+// const bookAptSchema = new mongoose.Schema({
+//   aptId: {
+//     type: String,
+//     required: true,
+//     unique: true
+//   },
+//   patientId: {
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: 'Patient',
+//     required: true
+//   },
+//   doctorId: {
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: 'Doctor',
+//     required: true
+//   },
+//   slot: String,
+//   appointmentDate: Date
+// }, { timestamps: true });
+
+module.exports = mongoose.model('BookApt', bookAptSchema);                                           
